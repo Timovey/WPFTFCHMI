@@ -1,0 +1,319 @@
+﻿<Window x:Class="TFCHMI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TFCHMI"
+        mc:Ignorable="d"
+        Title="MainWindow" MinHeight="450" MinWidth="800" Padding="10">
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="btTemplate">
+            <Border 
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Background="{TemplateBinding Background}"
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}" >
+                <ContentControl Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}" />
+                
+                
+            </Border>
+        </ControlTemplate>
+
+        <ControlTemplate TargetType="MenuItem" x:Key="menuTemplate">
+
+            <Border 
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Background="{TemplateBinding Background}"
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}" >
+                <ContentControl Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                
+                               />
+
+            </Border>
+        </ControlTemplate>
+
+        <Style x:Key="MenuItemStandart" TargetType="MenuItem">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="#FF094239" Opacity="0.7"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <SolidColorBrush Color="White"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontWeight" Value="Heavy"/>
+            <Setter Property="FontFamily" Value="/TCHMI;component/Fonts/Akaya_Telivigala/#Akaya Telivigala"/>
+            <Setter Property="FontSize" Value="20">
+            </Setter>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="White" Opacity="0.7"></SolidColorBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="2">
+            </Setter>
+            <Setter Property="MinHeight" Value="50"></Setter>
+            <Setter Property="MinWidth" Value="120"></Setter>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"></Setter>
+                </Style>
+            </Style.Resources>
+
+        </Style>
+
+        <Style x:Key="DownButton" TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="#FF094239" Opacity="0.5">
+                    </SolidColorBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="White" Opacity="0.7"></SolidColorBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="2">
+            </Setter>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"></Setter>
+                </Style>
+            </Style.Resources>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation To="White" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" SpeedRatio="2"
+                                    Duration="0:0:1"/>
+                                <DoubleAnimation
+                  Storyboard.TargetProperty="(Button.Opacity)"
+                  From="0.5" To="1" Duration="0:0:0.5" AutoReverse="True"
+                  RepeatBehavior="Forever" />
+                            </Storyboard>
+
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation To="#FF094239" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" SpeedRatio="2"
+                                    Duration="0:0:1"/>
+                                <DoubleAnimation
+                  Storyboard.TargetProperty="(Button.Opacity)"
+                  To="1" Duration="0:0:0.1" />
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SongButton" TargetType="Button">
+            <Setter Property="Background" Value="#FFAABFBD"/>
+            <Setter Property="Margin" Value="10 10 10 20"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="#FF2F3C3B" Opacity="0.7"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"></Setter>
+                </Style>
+            </Style.Resources>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation To="#FFDC5656" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" SpeedRatio="2"
+                                    Duration="0:0:1"/>
+                            </Storyboard>
+
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation To="#FFAABFBD" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" SpeedRatio="2"
+                                    Duration="0:0:1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="TextBlockWhite" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="/TCHMI;component/Fonts/Akaya_Telivigala/#Akaya Telivigala"/>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <SolidColorBrush Color="White">
+
+                    </SolidColorBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TextBlockBlack" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="/TCHMI;component/Fonts/Akaya_Telivigala/#Akaya Telivigala"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <SolidColorBrush Color="Black">
+
+                    </SolidColorBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ImageOnButton" TargetType="Image">
+            <Setter Property="Stretch" Value="Fill"/>
+            <Setter Property="MinHeight" Value="60"/>
+            <Setter Property="MinWidth" Value="75"/>
+            <Setter Property="MaxWidth" Value="150"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid MinWidth="800" MinHeight="450" Margin="0,0,0,0">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.7">
+                <GradientStop Color="#FF0B473E" Offset="1"/>
+                <GradientStop Color="#FF6BF9E6"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.7*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="1.1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,10,10,10" Width="auto" Height="auto">
+            <Button Name="btnRunAway" Style="{StaticResource SongButton}" Template="{StaticResource btTemplate}" Click="ButtonRunAway_Click">
+                <StackPanel>
+                    <Image Source="Image/1.png" Style="{StaticResource ImageOnButton}"/>
+                    <TextBlock Text="Run Away" Style="{StaticResource TextBlockBlack}"></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource SongButton}" Template="{StaticResource btTemplate}" Name="bntShrek" Click="ButtonShrek_Click">
+                <StackPanel>
+                    <Image Source="Image/2.png" Style="{StaticResource ImageOnButton}" Stretch="Fill"/>
+                    <TextBlock Text="Zonnestraal" Style="{StaticResource TextBlockBlack}"></TextBlock>
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource SongButton}" Template="{StaticResource btTemplate}" Name="btnVolk" Click="ButtonVolk_Click">
+                <StackPanel>
+                    <Image Source="Image/3.png" Style="{StaticResource ImageOnButton}"/>
+                    <TextBlock Text="Substance" Style="{StaticResource TextBlockBlack}"></TextBlock>
+                </StackPanel>
+            </Button>
+
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Stretch" MinWidth="100" MinHeight="100" Margin="0,0,10,10">
+            <Menu BorderThickness="4" HorizontalAlignment="Left" Margin="20,10,10,10" VerticalAlignment="Top" Name="Меню" Opacity="10">
+                <Menu.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF1A8B79" Offset="0"/>
+                        <GradientStop Color="#FF062B25" Offset="1"/>
+                    </LinearGradientBrush>
+                </Menu.BorderBrush>
+                <Menu.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"></Setter>
+                    </Style>
+                </Menu.Resources>
+                <Menu.Background>
+                    <SolidColorBrush Color="#FF062B25" Opacity="0.7"/>
+                </Menu.Background>
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+                <MenuItem Header="Home" Style="{StaticResource MenuItemStandart}"/>
+                <MenuItem Header="Songs" Style="{StaticResource MenuItemStandart}" />
+                <MenuItem Header="Top-3" Style="{StaticResource MenuItemStandart}"/>
+                <MenuItem Header="Genres" Style="{StaticResource MenuItemStandart}"/>
+            </Menu>
+        </StackPanel>
+        <WrapPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center">
+
+        </WrapPanel>
+        <WrapPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" MinHeight="100" VerticalAlignment="Bottom" MinWidth="200" Margin="10,10,40,20">
+            <Border Padding="3" CornerRadius="11">
+                <Border.Background>
+                    <SolidColorBrush Color="#FF094239" Opacity="0.5"/>
+                </Border.Background>
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Text="Volume" Style="{StaticResource TextBlockWhite}" FontSize="22"/>
+                    <Slider Orientation="Horizontal" IsSnapToTickEnabled="True" Minimum="0" Maximum="100" Value="50" 
+                            TickFrequency="10" TickPlacement="BottomRight" Margin="0,10,10,0" MinHeight="30" MinWidth="250"
+                            Name="volume" ValueChanged="volume_ValueChanged">
+                    </Slider>
+                </StackPanel>
+            </Border>
+        </WrapPanel>
+        <WrapPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Border Padding="3" CornerRadius="11" Width="auto" Height="auto">
+                <Border.Background>
+                    <SolidColorBrush Color="#1f685d" Opacity="0.3"/>
+                </Border.Background>
+                <WrapPanel Margin="10 10 10 10">
+                    <MediaElement MinWidth="400" MinHeight="200" LoadedBehavior="Manual" Stretch="Uniform" Name="media">
+                    </MediaElement>
+                </WrapPanel>
+            </Border>
+
+        </WrapPanel>
+
+
+        <Border Padding="3" CornerRadius="11" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" MinHeight="100" VerticalAlignment="Bottom" MinWidth="100" Margin="10,10,40,20">
+            <Button Margin="0,0,0,20" Style="{StaticResource DownButton}" Template="{StaticResource btTemplate}" Name="btnStop" Click="ButtonStop_Click">
+                <TextBlock Text="Stop" FontSize="30" Style="{StaticResource TextBlockWhite}"></TextBlock>
+            </Button>
+        </Border>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Width="auto" Height="auto">
+            <Border Padding="3" CornerRadius="11"  HorizontalAlignment="Center" MinHeight="100" VerticalAlignment="Bottom" MinWidth="100" Margin="10,10,10,20">
+                <Button Margin="0,0,0,20" Style="{StaticResource DownButton}" Template="{StaticResource btTemplate}" Name="btnPause" Click="ButtonPause_Click">
+                    <TextBlock Text="Pause" FontSize="30" Style="{StaticResource TextBlockWhite}"></TextBlock>
+                </Button>
+            </Border>
+            <Border Padding="3" CornerRadius="11"  HorizontalAlignment="Center" MinHeight="100" VerticalAlignment="Bottom" MinWidth="100" Margin="10,10,10,20">
+                <Button Margin="0,0,0,20" Style="{StaticResource DownButton}" Template="{StaticResource btTemplate}" Name="btnPlay" Click="butPlay_Click">
+                    <TextBlock Text="Play" FontSize="30" Style="{StaticResource TextBlockWhite}"></TextBlock>
+                </Button>
+            </Border>
+        </StackPanel>
+        
+        
+    </Grid>
+
+</Window>
